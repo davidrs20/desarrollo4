@@ -1,6 +1,6 @@
 from funciones import calcular_y
 import argparse
- 
+
 def main(m,b):
     #X=[ x for x in range(1,11)]
     #Y=[calcular_y(x,m,b) for x in X]
@@ -19,4 +19,3 @@ if __name__ == '__main__':
     parser.add_argument('-b', type=float, help='Ordenada al origen', default=3.0)
     args = parser.parse_args()
     main(args.m,args.b)
- 
