@@ -12,7 +12,7 @@ def dibuja_tablero(simbolos:dict):
     ---------
     {simbolos['7']} | {simbolos['8']} | {simbolos['9']}
 ''')
-   
+
 if __name__ == '__main__':
     numeros = [str(x) for x in range(1, 10)]
     simbolos = {x:x for x in numeros}
@@ -21,3 +21,4 @@ if __name__ == '__main__':
     dibuja_tablero(simbolos)
     simbolos['5'] = 'O'
     dibuja_tablero(simbolos)
+    
