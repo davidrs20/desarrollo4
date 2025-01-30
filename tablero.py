@@ -27,8 +27,8 @@ def ia(simbolos:dict):
 def usuario(simbolos:dict):
     '''Juega el usuario'''
     ocupado = True
-    while ocupado == True:
-        x = imput('Ingresa el numero de la casilla: ')
+    while ocupado is True:
+        x = input('Ingresa el numero de la casilla: ')
         if x in numeros:
             if simbolos[x] not in ['X', 'O']:
                 simbolos[x] = 'X'
@@ -51,5 +51,5 @@ if __name__ == '__main__':
     #o = random.choice(numeros)
     #numeros.remove(o)
     #simbolos[o] = 'O'
-    dibuja_tablero(simbolos)
+    dibuja_tablero(dsimbolos)
     #print(numeros)
