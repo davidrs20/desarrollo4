@@ -20,9 +20,9 @@ def ia(simbolos:dict):
     ocupado = True
     while ocupado == True:
         x = random.choice(list(simbolos.keys()))
-    if simbolos[x] not in ['X','O']:
-        simbolos[x] = 'O'
-        ocupado = False
+        if simbolos[x] not in ['X','O']:
+            simbolos[x] = 'O'
+            ocupado = False
 
 def usuario(simbolos:dict):
     '''Juega el usuario'''
@@ -37,6 +37,44 @@ def usuario(simbolos:dict):
                 print('Casilla ocupada')
         else: 
             print ('Numero incorrecto')
+
+def juego(simbolos:dict):
+    '''Juego del Gato'''
+    lista_combinaciones = [
+        ['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9'],  # Horizontales
+        ['1', '4', '7'], ['2', '5', '8'], ['3', '6', '9'],  # Verticales
+        ['1', '5', '9'], ['3', '5', '7']  # Diagonales
+    ]
+    en_juego = True
+    ganador = ""
+    movimientos = 0
+    dibuja_tablero(simbolos)
+    while en_juego:
+        if movimientos < 9:
+            usuario(simbolos)
+            dibuja_tablero(simbolos)
+            movimientos += 1
+            gana = checa_winner(simbolos, lista_combinaciones)
+            if gana is True:
+                en_juego = False
+                ganador = 'Usuario/a'
+            ia(simbolos)
+            dibuja_tablero(simbolos)
+            movimientos += 1
+            gana = checa_winner(simbolos, lista_combinaciones)
+            if gana is True:
+                en_juego = False
+                ganador = 'Computadora'
+        else :
+            en 
+
+
+def checa_winner(simbolos:dict, combinaciones:list):
+    '''Checa si hay un ganador'''
+    for c in combinaciones:
+        if simbolos[c[0]] == simbolos[c[1]] == simbolos[c[2]]:
+            return simbolos [c[0]]
+    return None
 
 if __name__ == '__main__':
     numeros = [str(i) for i in range(1, 10)]
