@@ -83,31 +83,34 @@ def checa_winner(simbolos:dict, combinaciones:list):
             return simbolos[c[0]]
     return None
 
-def actualiza_score(score:dict,ganador:str):
+def actualiza_score(score:dict, ganador:str, nombre_usuario:str):
     ''' Actualiza el score '''
-    X = score["X"]
-    O = score["O"]
+    usuario = score[nombre_usuario]
+    IA = score["IA"]
     if ganador is not None:
         print(f'El ganador es {ganador}')
-        if ganador == 'X':
-            X["G"] += 1
-            O["P"] += 1
-        elif ganador == 'O':
-            O["G"] += 1
-            X["P"] += 1
+        if ganador == nombre_usuario:
+            usuario["G"] += 1
+            IA["P"] += 1
+        elif ganador == 'IA':
+            IA["G"] += 1
+            usuario["P"] += 1
         else:
-            X["E"] += 1
-            O["E"] += 1
+            usuario["E"] += 1
+            IA["E"] += 1
     else:
         print('Empate')
-        X["E"] += 1
-        O["E"] += 1
+        usuario["E"] += 1
+        IA["E"] += 1
 
-def despliega_tablero(score:dict):
+def despliega_tablero(score:dict, nombre_usuario:str):
     ''' Despliega el tablero de score '''
+    usuario = score[nombre_usuario]
+    IA = score["IA"]
+
     print(f'''
-    X | G: {score["X"]["G"]} | P: {score["X"]["P"]} | E: {score["X"]["E"]}
-    O | G: {score["O"]["G"]} | P: {score["O"]["P"]} | E: {score["O"]["E"]}
+    {nombre_usuario} | G: {usuario["G"]} | P: {usuario["P"]} | E: {usuario["E"]}
+    IA | G: {IA["G"]} | P: {IA["P"]} | E: {IA["E"]}
     ''')
 
 if __name__ == '__main__':
